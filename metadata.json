@@ -1,0 +1,7 @@
+{
+  "name": "Contact Desk",
+  "description": "A simple contacts manager built with React and Express.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
