@@ -121,11 +121,10 @@ function App() {
     }
   }
 
-  function handleSwitchUser() {
-    contactsApi.resetUserSession();
+  async function handleClearMemory() {
+    await contactsApi.clearAll();
     resetForm();
     setContacts([]);
-    loadContacts();
   }
 
   const isEditing = Boolean(editingId);
@@ -138,15 +137,17 @@ function App() {
           <span>contact<span className="brand-light">desk</span></span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <span className="topbar-note"><span className="status-dot" /> Private address book</span>
-          <button
-            onClick={handleSwitchUser}
-            className="text-button"
-            title="Start a fresh visitor session to test opening the app as a new user"
-            style={{ fontSize: '11px', color: '#78858d' }}
-          >
-            New user test
-          </button>
+          <span className="topbar-note"><span className="status-dot" /> Local cache storage</span>
+          {contacts.length > 0 && (
+            <button
+              onClick={handleClearMemory}
+              className="text-button"
+              title="Clear all contacts from local cache memory"
+              style={{ fontSize: '11px', color: '#78858d' }}
+            >
+              Clear memory
+            </button>
+          )}
         </div>
       </header>
 
