@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_URL}${path}`, {
@@ -19,8 +20,19 @@ async function request(path, options = {}) {
 }
 
 export const contactsApi = {
-  list: () => request('/contacts'),
-  create: (contact) => request('/contacts', { method: 'POST', body: JSON.stringify(contact) }),
-  update: (id, contact) => request(`/contacts/${id}`, { method: 'PUT', body: JSON.stringify(contact) }),
-  remove: (id) => request(`/contacts/${id}`, { method: 'DELETE' }),
+  list: () => request('/api/contacts'),
+  create: (contact) =>
+    request('/api/contacts', {
+      method: 'POST',
+      body: JSON.stringify(contact),
+    }),
+  update: (id, contact) =>
+    request(`/api/contacts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(contact),
+    }),
+  remove: (id) =>
+    request(`/api/contacts/${id}`, {
+      method: 'DELETE',
+    }),
 };
